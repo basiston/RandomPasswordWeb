@@ -2,22 +2,33 @@
 app.controller('randomPasswordController', ['$scope', 'randomPasswordService', function ($scope, randomPasswordService) {
 
 
-    $scope.Password =
+    $scope.GeneratePasswordReq =
     {
-        value: ''
+        includeUpperCase: false,
+        includeLowerCase: false,
+        includeNumbers: false,
+        includeSpecialChars: false,
+        stringlength:4
     }
 
-    $scope.GeneratePassword = function (value) {
-        if (value === "") {
-            alert("value is null");
+    $scope.GeneratePassword = function (generatepasswordrequirement) {
+        if (generatepasswordrequirement === "" || generatepasswordrequirement ==null) {
+            alert("Please select one option");
             return;
         }
-        randomPasswordService.getrandomPassword(true, true, true, true, 5).then(function (result) {
+        randomPasswordService.getrandomPassword(generatepasswordrequirement.includeUpperCase,
+                                               generatepasswordrequirement.includeLowerCase, generatepasswordrequirement.includeNumbers,
+                                               generatepasswordrequirement.includeSpecialChars, generatepasswordrequirement.stringlength).then(function (result) {
             $scope.result = result.data;
         }, function (error) {
             $scope.error = error.statusText;
         });
 
+    };
+
+    $scope.Clear = function() {
+        $scope.GeneratePasswordReq = null;
+        $scope.result = null;
     };
 
     //$scope.Clear = function () {

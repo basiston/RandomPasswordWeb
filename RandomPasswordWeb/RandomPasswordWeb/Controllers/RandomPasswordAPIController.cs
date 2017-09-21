@@ -21,7 +21,7 @@ namespace RandomPasswordWeb.Controllers
 
 
         [HttpGet]
-        public string Get(bool includeUpperCase, bool includeLowerCase, bool includeNumbers, bool includeSpecialChars, int stringlength)
+        public string Get(bool includeUpperCase, bool includeLowerCase, bool includeNumbers, bool includeSpecialChars, int stringlength=4)
         {
 
             if (!includeLowerCase && !includeUpperCase && !includeNumbers && !includeSpecialChars)

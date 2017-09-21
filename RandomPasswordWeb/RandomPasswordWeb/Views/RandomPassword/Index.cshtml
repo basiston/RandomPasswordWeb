@@ -17,26 +17,26 @@
         <div class="form-group row col-xs-12 col-lg-12">
             <label for=chkUpperCase class="col-xs-4 col-lg-3 control-label">Include UpperCase Characters</label>
             <div class="col-xs-2 col-lg-2 ">
-                <input class="col-xs-2 col-lg-2" type="checkbox" id="chkUpperCase" />
+                <input class="col-xs-2 col-lg-2" ng-model="GeneratePasswordReq.includeUpperCase" type="checkbox" id="chkUpperCase" />
             </div>
         </div>
         <div class="form-group row col-xs-12 col-lg-12">
             <label for=chkLowerCase class="col-xs-4 col-lg-3 control-label">Include Lower Characters</label>
             <div class="col-xs-2 col-lg-2 ">
-                <input class="col-xs-2 col-lg-2" type="checkbox" id="chkLowerCase" />
+                <input class="col-xs-2 col-lg-2" ng-model="GeneratePasswordReq.includeLowerCase"  type="checkbox" id="chkLowerCase" />
             </div>
         </div>
         <div class="form-group row col-xs-12 col-lg-12">
             <label for=chkNumber class="col-xs-4 col-lg-3 control-label">Include Numbers</label>
             <div class="col-xs-2 col-lg-2 ">
-                <input class="col-xs-2 col-lg-2" type="checkbox" id="chkNumber" />
+                <input class="col-xs-2 col-lg-2" ng-model="GeneratePasswordReq.includeNumbers"  type="checkbox" id="chkNumber" />
             </div>
         </div>
         
         <div class="form-group row col-xs-12 col-lg-12">
             <label for=chkSpecialCase class="col-xs-4 col-lg-3 control-label">Include Special Characters</label>
             <div class="col-xs-2 col-lg-2 ">
-                <input class="col-xs-2 col-lg-2" type="checkbox" id="chkSpecialCase" />
+                <input class="col-xs-2 col-lg-2" ng-model="GeneratePasswordReq.includeSpecialChars"  type="checkbox" id="chkSpecialCase" />
             </div>
         </div>
         
@@ -44,7 +44,7 @@
         <div class="form-group row col-xs-12 col-lg-12">
             <label for=cboPasswordlength class="col-xs-4 col-lg-3 control-label">Password Length</label>
             <div class="col-xs-2 col-lg-2 ">
-                <select id="cboPasswordlength">
+                <select ng-model="GeneratePasswordReq.stringlength"  id="cboPasswordlength">
                     <option >4</option>
                     <option>5</option>
                     <option selected="selected">6</option>
@@ -60,7 +60,8 @@
             </div>
         </div>
         <div id="button-fields" class="row col-xs-12 col-lg-12">
-            <button ng-click="GeneratePassword(2)" class="btn-default">Generate Password</button>
+            <button ng-click="GeneratePassword(GeneratePasswordReq)" class="btn-default">Generate Password</button>
+            <button ng-click="Clear()" class="btn-default">Clear</button>
         </div>
      
    
