@@ -6,7 +6,7 @@
 
 
 
-<div class="container">
+<div class="container" ng-controller="randomPasswordController">
     <h4>
         Random Password Generator
     </h4>
@@ -53,12 +53,18 @@
                 </select>
             </div>
         </div>
-
-        <button ng-click="" class="btn-default">Generate</button>
+        <div class="form-group row col-xs-12 col-lg-12">
+            <label for=txtNewPassword class="col-xs-4 col-lg-3 control-label">Your New Password</label>
+            <div class="col-xs-2 col-lg-2 ">
+                <input readonly="readonly" class="form-control col-xs-7 col-lg-7" ng-value="result" ng-bind="result" type="text" id="txtNewPassword" />
+            </div>
+        </div>
+        <div id="button-fields" class="row col-xs-12 col-lg-12">
+            <button ng-click="GeneratePassword(2)" class="btn-default">Generate Password</button>
+        </div>
+     
+   
     </form>
-
     
-    <footer>
-        The application is done by using AngularJs with ASP.NET WEBAPI2
-    </footer>
+
 </div>
