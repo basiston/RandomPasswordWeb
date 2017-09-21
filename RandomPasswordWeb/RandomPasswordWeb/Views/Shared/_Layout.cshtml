@@ -8,18 +8,38 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body ng-app="app">
+    <div>
+        @{
+            var fullPath = Request.Url.AbsoluteUri;
+            var detailedPath = Request.Url.PathAndQuery;
+            var applicationPath = Request.ApplicationPath;
+            if (fullPath != null && fullPath != "" && detailedPath != null && detailedPath != "")
+            {
 
-    @RenderBody()
+                var index = fullPath.LastIndexOf(detailedPath);
+                if (index > 0)
+                {
+                    fullPath = fullPath.Substring(0, index);
+                    if (applicationPath != "/")
+                    {
+                        fullPath += applicationPath;
+                    }
+                }
+            }
+        }
+        @Html.Hidden("hdRoot", @fullPath, new { id = "hdRoot" })
+        @RenderBody()
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/angular")
-    @Scripts.Render("~/bundles/bootstrap")
-    <script src="~/Scripts/app/app.js"></script>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/angular")
+        @Scripts.Render("~/bundles/bootstrap")
+        <script src="~/Scripts/app/app.js"></script>
 
-    <script src="~/Scripts/app/services/randomPasswordService.js"></script>
-    <script src="~/Scripts/app/controllers/randomPasswordController.js"></script>
-    @RenderSection("scripts", required: false)
+        <script src="~/Scripts/app/services/randomPasswordService.js"></script>
+        <script src="~/Scripts/app/controllers/randomPasswordController.js"></script>
+        @RenderSection("scripts", required: false)
 
 
+    </div>
 </body>
 </html>

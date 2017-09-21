@@ -1,10 +1,10 @@
 ﻿"use strict";
 app.factory("randomPasswordService",
 [
-    "$http", function($http) {
+    "$http", "$location", function ($http, $location) {
 
         var randomPasswordServiceFactory = {};
-
+    
         var _getrandomPassword = function(includeUpperCase,
             includeLowerCase,
             includeNumbers,
@@ -13,7 +13,7 @@ app.factory("randomPasswordService",
 
             return $http({
                     method: "GET",
-                    url: "/api/RandomPasswordApi/",
+                    url: $("#hdRoot").val().replace("http:", location.protocol)+"/api/RandomPasswordApi/",
                     params: {
                         includeUpperCase: includeUpperCase,
                         includeLowerCase: includeLowerCase,
