@@ -13,7 +13,7 @@ app.factory("randomPasswordService",
 
             return $http({
                     method: "GET",
-                    url: $("#hdRoot").val().replace("http:", location.protocol)+"/api/RandomPasswordApi/",
+                    url: $("#hdRoot").val().replace("http:", location.protocol) + "/api/RandomPasswordApi/RandomPassword",
                     params: {
                         includeUpperCase: includeUpperCase,
                         includeLowerCase: includeLowerCase,

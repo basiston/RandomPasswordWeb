@@ -14,12 +14,26 @@ namespace RandomPasswordWeb.Controllers
         private string SpecialCharacters { get; } = "!#@$%";
 
 
+        /// <summary>
+        /// A method that returns random number based user requirement
+        /// </summary>
+        /// <param name="includeUpperCase">include uppercase characters</param>
+        /// <param name="includeLowerCase">include lowercase characters</param>
+        /// <param name="includeNumbers">include numbers</param>
+        /// <param name="includeSpecialChars">include special characters</param>
+        /// <param name="stringlength">password length</param>
+        /// <returns>random string</returns>
+
         [HttpGet]
-        public string Get(bool includeUpperCase, bool includeLowerCase, bool includeNumbers, bool includeSpecialChars,
+
+        [Route("api/RandomPasswordApi/RandomPassword")]
+        public IHttpActionResult Get(bool includeUpperCase, bool includeLowerCase, bool includeNumbers, bool includeSpecialChars,
             int stringlength = 4)
         {
             if (!includeLowerCase && !includeUpperCase && !includeNumbers && !includeSpecialChars)
-                return null;
+            {
+                NotFound();
+            }
             var masterstring = new StringBuilder();
 
             if (includeUpperCase)
@@ -36,7 +50,9 @@ namespace RandomPasswordWeb.Controllers
             for (var i = 0; i < stringsChars.Length; i++)
                 stringsChars[i] = masterstring[random.Next(masterstring.Length)];
             var finalstring = new string(stringsChars);
-            return finalstring;
+            return Ok(finalstring);
         }
+
+
     }
 }
