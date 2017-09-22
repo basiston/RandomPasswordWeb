@@ -32,7 +32,9 @@ namespace RandomPasswordWeb.Controllers
         {
             if (!includeLowerCase && !includeUpperCase && !includeNumbers && !includeSpecialChars)
             {
-                NotFound();
+                //return  Content(System.Net.HttpStatusCode.NotFound, "your own error message");
+                return NotFound();
+                
             }
             var masterstring = new StringBuilder();
 
